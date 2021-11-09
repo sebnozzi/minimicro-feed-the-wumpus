@@ -7,6 +7,13 @@ pickup = file.loadSound("/sys/sounds/pickup.wav")
 
 clear
 
+// Draw background
+gfx.clear color.white
+gfx.fillRect 0,0,960,50,color.brown
+
+// Set a good text color for background
+text.color = "#5f5f5f"
+
 sprtDisp = display(4)
 
 m = new Sprite
@@ -36,8 +43,6 @@ sprtDisp.sprites.push w
 caught = 0
 missed = 0
 countdown = time + 30
-
-text.color = "#C0C0C0CC"
 
 // This is for showing the statistics on the screen
 showStatistics = function()
