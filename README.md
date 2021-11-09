@@ -15,11 +15,14 @@ This game was done for illustration purposes, to learn about these Mini Micro as
   * Placement
   * Movement
   * Rotation
+  * Delta timing for animation
   * Collision detection using bounds
 * Sounds (loading / playing)
 * Key event handling
 * Calculating timeouts
-* Rendering text on the screen
+* Advanced usage of text screen
+  * Custom placement
+  * Scrolling only a section of the screen
 * and probably others ...
 
 ## Gameplay
