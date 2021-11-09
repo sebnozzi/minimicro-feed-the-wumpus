@@ -39,6 +39,36 @@ countdown = time + 30
 
 text.color = "#C0C0C0CC"
 
+// This is for showing the statistics on the screen
+showStatistics = function()
+	// Backup the current text display settings
+	textColor = text.color
+	textRow = text.row
+	textCol = text.column
+	textDelim = text.delimiter
+	
+	// Don't go to a newline after printing
+	text.delimiter = ""
+	
+	// Print statistics - placing text on the screen
+	text.row = 25
+	text.column = 53
+	print "Countdown: " + remainingTime
+	text.row = 24
+	text.column = 53
+	print "Caught: " + caught
+	text.row = 23
+	text.column = 53
+	print "Missed: " + missed
+	
+	// Restore previous settings
+	text.delimiter = textDelim
+	text.column = textCol
+	text.row = textRow
+	text.color = textColor
+end function
+
+
 while true
 	remainingTime = floor(countdown - time)
 	
@@ -68,10 +98,7 @@ while true
 		m.moveToTop
 	end if
 	
-	gfx.clear
-	gfx.print "Countdown: " + remainingTime,770,600,color.silver
-	gfx.print "Caught: "+caught,770,570,color.silver
-	gfx.print "Missed: "+missed,770,540,color.silver
+	showStatistics
 	
 	if remainingTime <= 0 then
 		print "GAME OVER"
