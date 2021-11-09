@@ -73,6 +73,26 @@ showStatistics = function()
 	text.color = textColor
 end function
 
+scrollTextUp = function(startRow)
+	// Scroll one line up
+	for row in range(25,startRow+1,-1)
+		for col in range(0,20)
+			c = text.cell(col,row-1)
+			text.setCell(col,row,c)
+		end for
+	end for
+	text.row = text.row + 1
+end function
+
+// Print a message, scrolling the message section if necessary
+showMessage = function(msg)
+	if text.row == 25-10 then
+		// Scroll one line up
+		scrollTextUp(25-10)
+	end if
+	print msg
+end function
+
 lastTime = time
 while true
 	remainingTime = floor(countdown - time)
@@ -97,12 +117,12 @@ while true
 	// Muffin touching Wumpus!
 	if m.overlaps(w) then
 		pickup.play
-		print "AHHMMM!!"
+		showMessage "AHHMMM!!"
 		caught = caught + 1
 		m.moveToTop
 	else if m.y < 40 then
 		hit.play
-		print "Too slow!"
+		showMessage "Too slow!"
 		missed = missed + 1
 		m.moveToTop
 	end if
@@ -110,7 +130,9 @@ while true
 	showStatistics
 	
 	if remainingTime <= 0 then
-		print "GAME OVER"
+		print
+		print " " * 30 + "GAME OVER"
+		print
 		exit
 	end if
 	
