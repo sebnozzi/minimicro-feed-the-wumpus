@@ -68,18 +68,22 @@ showStatistics = function()
 	text.color = textColor
 end function
 
-
+lastTime = time
 while true
 	remainingTime = floor(countdown - time)
 	
+	// Calculate delta-time for animations
+	dt = time - lastTime
+	lastTime = time
+	
 	// Let the muffin fall
-	m.y = m.y - 7
+	m.y = m.y - 430*dt
 	
 	if key.pressed("right") then
-		w.x = w.x + 6
+		w.x = w.x + 375*dt
 		w.rotation = 360-7
 	else if key.pressed("left") then
-		w.x = w.x - 6
+		w.x = w.x - 375*dt
 		w.rotation = 7
 	else
 		w.rotation = 0
