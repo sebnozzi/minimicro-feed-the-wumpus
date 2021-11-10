@@ -55,6 +55,13 @@ showStatistics = function()
 	// Don't go to a newline after printing
 	text.delimiter = ""
 	
+	// Clean up statistics area
+	for col in range(23,25)
+		for row in range(53,67)
+			text.setCell col,row,""
+		end for		
+	end for
+	
 	// Print statistics - placing text on the screen
 	text.row = 25
 	text.column = 53
