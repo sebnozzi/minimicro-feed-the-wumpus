@@ -32,3 +32,11 @@ Move the Wumpus with your arrow keys left and right.
 Try to catch as many muffins as possible in the given time.
 
 To quit you can press the "Q" key or ESC on your keyboard.
+
+## Credits
+
+Background image by: [Joseph Crown](http://www.crownjoseph.com/)
+
+Taken from: https://opengameart.org/content/kitchen-background-4-styles
+
+Adapted for the Mini Micro display.
