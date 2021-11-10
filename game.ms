@@ -1,3 +1,6 @@
+
+COUNTDOWN_START = 10
+
 clear
 
 print "Loading sounds ..."
@@ -46,6 +49,7 @@ sprtDisp.sprites.push w
 caught = 0
 missed = 0
 countdown = time + 30
+countdown = time + COUNTDOWN_START
 
 // This is for showing the statistics on the screen
 showStatistics = function()
