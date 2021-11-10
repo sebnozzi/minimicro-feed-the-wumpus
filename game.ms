@@ -1,5 +1,5 @@
 
-COUNTDOWN_START = 10
+COUNTDOWN_START = 30
 
 clear
 
@@ -101,64 +101,64 @@ end function
 // Print a message, scrolling the message section if necessary
 showMessage = function(msg)
 	if text.row == 25-10 then
-	if text.row == 25-6 then
-		// Scroll one line up
-		scrollTextUp(25-10)
-		scrollTextUp(25-6)
-	end if
-	print msg
-end function
-
-lastTime = time
-while true
-	remainingTime = floor(countdown - time)
+		if text.row == 25-6 then
+			// Scroll one line up
+			scrollTextUp(25-10)
+			scrollTextUp(25-6)
+		end if
+		print msg
+	end function
 	
-	// Calculate delta-time for animations
-	dt = time - lastTime
 	lastTime = time
-	
-	// Let the muffin fall
-	m.y = m.y - 430*dt
-	
-	if key.pressed("right") then
-		w.x = w.x + 375*dt
-		w.rotation = 360-7
-	else if key.pressed("left") then
-		w.x = w.x - 375*dt
-		w.rotation = 7
-	else
-		w.rotation = 0
-	end if
-	
-	// Muffin touching Wumpus!
-	if m.overlaps(w) then
-		pickup.play
-		showMessage "AHHMMM!!"
-		caught = caught + 1
-		m.moveToTop
-	else if m.y < 40 then
-		hit.play
-		showMessage "Too slow!"
-		missed = missed + 1
-		m.moveToTop
-	end if
-	
-	showStatistics
-	
-	if remainingTime <= 0 then
-		print
-		text.row = 10
-		print " " * 30 + "GAME OVER"
-		print
-		exit
-	end if
-	
-	if key.available then
-		k = key.get
-		if k == "q" or key.pressed("escape") then
+	while true
+		remainingTime = floor(countdown - time)
+		
+		// Calculate delta-time for animations
+		dt = time - lastTime
+		lastTime = time
+		
+		// Let the muffin fall
+		m.y = m.y - 430*dt
+		
+		if key.pressed("right") then
+			w.x = w.x + 375*dt
+			w.rotation = 360-7
+		else if key.pressed("left") then
+			w.x = w.x - 375*dt
+			w.rotation = 7
+		else
+			w.rotation = 0
+		end if
+		
+		// Muffin touching Wumpus!
+		if m.overlaps(w) then
+			pickup.play
+			showMessage "AHHMMM!!"
+			caught = caught + 1
+			m.moveToTop
+		else if m.y < 40 then
+			hit.play
+			showMessage "Too slow!"
+			missed = missed + 1
+			m.moveToTop
+		end if
+		
+		showStatistics
+		
+		if remainingTime <= 0 then
+			print
+			text.row = 10
+			print " " * 30 + "GAME OVER"
+			print
 			exit
 		end if
-	end if
-	
-	yield
-end while
+		
+		if key.available then
+			k = key.get
+			if k == "q" or key.pressed("escape") then
+				exit
+			end if
+		end if
+		
+		yield
+	end while
