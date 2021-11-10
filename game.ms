@@ -10,8 +10,11 @@ clear
 // Draw background
 gfx.clear color.white
 gfx.fillRect 0,0,960,50,color.brown
+bgImg = file.loadImage("kitchen Background Lite.png")
+gfx.drawImage bgImg,0,0
 
 // Set a good text color for background
+// Set a good text color suitable to the background
 text.color = "#5f5f5f"
 
 sprtDisp = display(4)
