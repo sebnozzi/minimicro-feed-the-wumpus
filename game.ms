@@ -101,8 +101,10 @@ end function
 // Print a message, scrolling the message section if necessary
 showMessage = function(msg)
 	if text.row == 25-10 then
+	if text.row == 25-6 then
 		// Scroll one line up
 		scrollTextUp(25-10)
+		scrollTextUp(25-6)
 	end if
 	print msg
 end function
@@ -145,6 +147,7 @@ while true
 	
 	if remainingTime <= 0 then
 		print
+		text.row = 10
 		print " " * 30 + "GAME OVER"
 		print
 		exit
