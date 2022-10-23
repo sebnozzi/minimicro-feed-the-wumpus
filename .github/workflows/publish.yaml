@@ -11,7 +11,9 @@ jobs:
   publish:
     uses: sebnozzi/minimicro-actions/.github/workflows/ftp-web-deploy.yaml@main
     with:
+      page_title: "Feed the Wumpus! | MiniMicro"
       minidisk_main_file: game.ms
+      minidisk_additional_entries: "kitchen Background Lite.png"
       ftp_host: "sebnozzi.com"
       ftp_target_path: "/public_html/demos/mini-micro/feed-the-wumpus/"
     secrets:
