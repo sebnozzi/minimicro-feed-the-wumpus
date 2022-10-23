@@ -9,7 +9,7 @@ on:
 jobs:
 
   publish:
-    uses: sebnozzi/minimicro-actions/.github/workflows/ftp-deploy.yaml@main
+    uses: sebnozzi/minimicro-actions/.github/workflows/ftp-web-deploy.yaml@main
     with:
       minidisk_main_file: game.ms
       ftp_host: "sebnozzi.com"
