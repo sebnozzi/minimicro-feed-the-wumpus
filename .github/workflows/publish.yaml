@@ -1,0 +1,19 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+
+  publish:
+    uses: sebnozzi/minimicro-actions/.github/workflows/ftp-deploy.yaml@main
+    with:
+      minidisk_main_file: game.ms
+      ftp_host: "sebnozzi.com"
+      ftp_target_path: "/public_html/demos/mini-micro/feed-the-wumpus"
+    secrets:
+      ftp_username: ${{ secrets.FTP_USER }}
+      ftp_password: ${{ secrets.FTP_PASS }}
